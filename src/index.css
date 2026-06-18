@@ -3,6 +3,23 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/red-dark.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/amber-dark.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/teal.css";
+@import "@radix-ui/colors/teal-dark.css";
+@import "@radix-ui/colors/purple.css";
+@import "@radix-ui/colors/purple-dark.css";
+@import "@radix-ui/colors/pink.css";
+@import "@radix-ui/colors/pink-dark.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -48,73 +65,51 @@
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-    --background: oklch(0.98 0.015 75);
-    --foreground: oklch(0.22 0.02 50);
-    --card: oklch(0.99 0.01 75);
-    --card-foreground: oklch(0.22 0.02 50);
-    --popover: oklch(0.99 0.01 75);
-    --popover-foreground: oklch(0.22 0.02 50);
-    --primary: oklch(0.62 0.16 48);
-    --primary-foreground: oklch(0.99 0.01 75);
-    --secondary: oklch(0.93 0.025 70);
-    --secondary-foreground: oklch(0.22 0.02 50);
-    --muted: oklch(0.94 0.02 70);
-    --muted-foreground: oklch(0.5 0.03 60);
-    --accent: oklch(0.58 0.09 195);
-    --accent-foreground: oklch(0.98 0.015 75);
-    --destructive: oklch(0.58 0.22 27);
-    --border: oklch(0.88 0.02 65);
-    --input: oklch(0.88 0.02 65);
-    --ring: oklch(0.62 0.16 48);
-    --chart-1: oklch(0.75 0.13 60);
-    --chart-2: oklch(0.62 0.16 48);
-    --chart-3: oklch(0.55 0.18 30);
-    --chart-4: oklch(0.58 0.09 195);
-    --chart-5: oklch(0.4 0.05 50);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-}
+/*
+  Semantic tokens point at Radix Colors scale steps (imported above) rather
+  than literal values. Radix's gray-dark.css/blue-dark.css/etc. redefine the
+  same --gray-1, --blue-9, etc. variables scoped under .dark, so applying the
+  .dark class anywhere up the tree flips every semantic token below at once -
+  no separate dark block needed.
 
-.dark {
-    --background: oklch(0.2 0.02 50);
-    --foreground: oklch(0.95 0.015 70);
-    --card: oklch(0.25 0.02 50);
-    --card-foreground: oklch(0.95 0.015 70);
-    --popover: oklch(0.25 0.02 50);
-    --popover-foreground: oklch(0.95 0.015 70);
-    --primary: oklch(0.68 0.16 48);
-    --primary-foreground: oklch(0.2 0.02 50);
-    --secondary: oklch(0.32 0.025 55);
-    --secondary-foreground: oklch(0.95 0.015 70);
-    --muted: oklch(0.32 0.02 55);
-    --muted-foreground: oklch(0.68 0.02 60);
-    --accent: oklch(0.62 0.1 195);
-    --accent-foreground: oklch(0.95 0.015 70);
-    --destructive: oklch(0.65 0.2 25);
-    --border: oklch(1 0 0 / 12%);
-    --input: oklch(1 0 0 / 16%);
-    --ring: oklch(0.68 0.16 48);
-    --chart-1: oklch(0.75 0.13 60);
-    --chart-2: oklch(0.68 0.16 48);
-    --chart-3: oklch(0.6 0.18 30);
-    --chart-4: oklch(0.62 0.1 195);
-    --chart-5: oklch(0.55 0.05 50);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+  Step usage follows Radix's documented 12-step convention: 1-2 backgrounds,
+  3-5 UI element backgrounds, 6 subtle borders, 7 UI element borders/focus
+  rings, 8 hovered borders, 9-10 solid backgrounds, 11 low-contrast/colored
+  text, 12 high-contrast text.
+*/
+:root {
+    --background: var(--gray-1);
+    --foreground: var(--gray-12);
+    --card: var(--gray-2);
+    --card-foreground: var(--gray-12);
+    --popover: var(--gray-2);
+    --popover-foreground: var(--gray-12);
+    --primary: var(--blue-9);
+    --primary-foreground: #ffffff;
+    --secondary: var(--gray-3);
+    --secondary-foreground: var(--gray-12);
+    --muted: var(--gray-3);
+    --muted-foreground: var(--gray-11);
+    --accent: var(--gray-4);
+    --accent-foreground: var(--gray-12);
+    --destructive: var(--red-11);
+    --border: var(--gray-6);
+    --input: var(--gray-7);
+    --ring: var(--blue-7);
+    --chart-1: var(--blue-9);
+    --chart-2: var(--green-9);
+    --chart-3: var(--amber-9);
+    --chart-4: var(--purple-9);
+    --chart-5: var(--teal-9);
+    --radius: 0.625rem;
+    --sidebar: var(--gray-2);
+    --sidebar-foreground: var(--gray-12);
+    --sidebar-primary: var(--blue-9);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: var(--gray-4);
+    --sidebar-accent-foreground: var(--gray-12);
+    --sidebar-border: var(--gray-6);
+    --sidebar-ring: var(--blue-7);
 }
 
 @layer base {

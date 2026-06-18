@@ -1,3 +1,11 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -7,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Dialog,
   DialogContent,
@@ -17,6 +26,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 function Section({
   title,
@@ -35,6 +54,38 @@ function Section({
   )
 }
 
+const COLOR_SCALES = [
+  "gray",
+  "blue",
+  "red",
+  "amber",
+  "green",
+  "teal",
+  "purple",
+  "pink",
+] as const
+
+function ColorScale({ name }: { name: string }) {
+  const steps = Array.from({ length: 12 }, (_, i) => i + 1)
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-16 shrink-0 text-sm font-medium capitalize">
+        {name}
+      </span>
+      <div className="flex flex-1 overflow-hidden rounded-md">
+        {steps.map((step) => (
+          <div
+            key={step}
+            className="h-8 flex-1"
+            style={{ background: `var(--${name}-${step})` }}
+            title={`--${name}-${step}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className="mx-auto max-w-3xl space-y-10 px-6 py-12">
@@ -49,6 +100,17 @@ function App() {
           .
         </p>
       </header>
+
+      <section className="space-y-3">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+          Colors
+        </h2>
+        <div className="space-y-2">
+          {COLOR_SCALES.map((name) => (
+            <ColorScale key={name} name={name} />
+          ))}
+        </div>
+      </section>
 
       <Section title="Button">
         <Button>Default</Button>
@@ -99,8 +161,97 @@ function App() {
           </DialogContent>
         </Dialog>
       </Section>
+
+      <Section title="Switch / Checkbox">
+        <Switch defaultChecked />
+        <Checkbox defaultChecked />
+      </Section>
+
+      <Section title="Avatar">
+        <Avatar>
+          <AvatarFallback>CR</AvatarFallback>
+        </Avatar>
+      </Section>
+
+      <Section title="Progress">
+        <Progress value={66} className="max-w-xs" />
+      </Section>
+
+      <Section title="Tooltip">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline">Hover me</Button>
+          </TooltipTrigger>
+          <TooltipContent>Tooltip content</TooltipContent>
+        </Tooltip>
+      </Section>
+
+      <section className="space-y-3">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+          Alert
+        </h2>
+        <Alert>
+          <AlertTitle>Heads up</AlertTitle>
+          <AlertDescription>Alert description goes here.</AlertDescription>
+        </Alert>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+          Tabs
+        </h2>
+        <Tabs defaultValue="one" className="max-w-sm">
+          <TabsList>
+            <TabsTrigger value="one">One</TabsTrigger>
+            <TabsTrigger value="two">Two</TabsTrigger>
+          </TabsList>
+          <TabsContent value="one">Tab one content.</TabsContent>
+          <TabsContent value="two">Tab two content.</TabsContent>
+        </Tabs>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+          Accordion
+        </h2>
+        <Accordion type="single" collapsible className="max-w-sm">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Section one</AccordionTrigger>
+            <AccordionContent>Section one content.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Section two</AccordionTrigger>
+            <AccordionContent>Section two content.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      <Separator />
+
+      <p className="text-sm text-muted-foreground">
+        56 components total — see{" "}
+        <a
+          href="https://github.com/christopherrangelux-dev/ui-registry"
+          className="underline"
+        >
+          the repo
+        </a>{" "}
+        for the full list available via{" "}
+        <code className="rounded bg-muted px-1.5 py-0.5">
+          npx shadcn add @me/&lt;name&gt;
+        </code>
+        .
+      </p>
     </div>
   )
 }
 
-export default App
+function AppWithProviders() {
+  return (
+    <TooltipProvider>
+      <App />
+    </TooltipProvider>
+  )
+}
+
+export default AppWithProviders
