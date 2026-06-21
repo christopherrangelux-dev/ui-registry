@@ -11,12 +11,16 @@
 @import "@radix-ui/colors/red-dark.css";
 @import "@radix-ui/colors/amber.css";
 @import "@radix-ui/colors/amber-dark.css";
+@import "@radix-ui/colors/brown.css";
+@import "@radix-ui/colors/brown-dark.css";
 @import "@radix-ui/colors/green.css";
 @import "@radix-ui/colors/green-dark.css";
 @import "@radix-ui/colors/teal.css";
 @import "@radix-ui/colors/teal-dark.css";
 @import "@radix-ui/colors/purple.css";
 @import "@radix-ui/colors/purple-dark.css";
+@import "@radix-ui/colors/violet.css";
+@import "@radix-ui/colors/violet-dark.css";
 @import "@radix-ui/colors/pink.css";
 @import "@radix-ui/colors/pink-dark.css";
 
@@ -84,18 +88,18 @@
     --card-foreground: var(--gray-12);
     --popover: var(--gray-2);
     --popover-foreground: var(--gray-12);
-    --primary: var(--blue-9);
+    --primary: var(--brown-9);
     --primary-foreground: #ffffff;
     --secondary: var(--gray-3);
     --secondary-foreground: var(--gray-12);
     --muted: var(--gray-3);
     --muted-foreground: var(--gray-11);
-    --accent: var(--gray-4);
-    --accent-foreground: var(--gray-12);
+    --accent: var(--violet-3);
+    --accent-foreground: var(--violet-11);
     --destructive: var(--red-11);
     --border: var(--gray-6);
     --input: var(--gray-7);
-    --ring: var(--blue-7);
+    --ring: var(--brown-7);
     --chart-1: var(--blue-9);
     --chart-2: var(--green-9);
     --chart-3: var(--amber-9);
@@ -104,12 +108,12 @@
     --radius: 0.625rem;
     --sidebar: var(--gray-2);
     --sidebar-foreground: var(--gray-12);
-    --sidebar-primary: var(--blue-9);
+    --sidebar-primary: var(--brown-9);
     --sidebar-primary-foreground: #ffffff;
     --sidebar-accent: var(--gray-4);
     --sidebar-accent-foreground: var(--gray-12);
     --sidebar-border: var(--gray-6);
-    --sidebar-ring: var(--blue-7);
+    --sidebar-ring: var(--brown-7);
 }
 
 @layer base {
